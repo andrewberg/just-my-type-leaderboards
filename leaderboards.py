@@ -37,11 +37,16 @@ def list():
 	rows = cur.fetchall() # grabs a list of rows
 	rows.sort(key = lambda x: x[1], reverse = True) # sorts based on score
 
-	scores = [] # init empty scores list
-	for x in rows: # iterates and adds to scores
-		scores.append("%s %s" % (x[0], x[1]))
+	jsonlist = []
+	scores = {} # init empty scores list
+	for row in rows: # iterates and adds to scores
+		score_json = {}
+		score_json['name'] = row[0]
+		score_json['score'] = row[1]
 
-	return render_template("list.html", scores = scores)
+		jsonlist.append(score_json)
+
+	return jsonify({'score_list':jsonlist})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=80,debug=True) # debug mode true and broadcasts
