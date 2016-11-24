@@ -26,7 +26,7 @@ def enterScore():
     		return render_template("result.html", msg = msg) # renders page
     		con.close()
 
-@app.route('/jmt/list')
+@app.route('/jmt/typingtest/list')
 def list():
 	con = sql.connect("jmtleaderboards.db")
 	con.row_factory = sql.Row 
@@ -40,6 +40,7 @@ def list():
 	scores = [] # init empty scores list
 	for x in rows: # iterates and adds to scores
 		scores.append("%s %s" % (x[0], x[1]))
+
 	return render_template("list.html", scores = scores)
 
 if __name__ == "__main__":

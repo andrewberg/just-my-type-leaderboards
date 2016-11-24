@@ -6,10 +6,10 @@ conn = sqlite3.connect('jmtleaderboards.db')
 print "Opened database successfully";
 
 conn.execute("CREATE TABLE IF NOT EXISTS "
-	"typingtestleader (name TEXT, score TEXT)")
+	"typingtestleader (name TEXT, score REAL)")
 conn.execute("CREATE TABLE IF NOT EXISTS "
-	"ballonleader (name TEXT, score TEXT)")
+	"ballonleader (name TEXT, score REAL)")
 conn.execute("CREATE TABLE IF NOT EXISTS "
-	"basketballleader (name TEXT, score TEXT)")
+	"basketballleader (name TEXT, score REAL)")
 print "Table created successfully";
 conn.close()
