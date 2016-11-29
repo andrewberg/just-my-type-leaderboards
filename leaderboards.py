@@ -176,5 +176,27 @@ def blList():
 
 	return jsonify({'score_list':jsonlist})
 
+@app.route('/jmt/racecar/updatescore', methods = ['POST', 'GET'])
+def rcUpdateScore():
+    if request.method == 'POST':
+    	name = request.form['name'] # grab name
+    	con = sql.connect('jmtleaderboards.db') # open connection
+    	cur = con.cursor() # get the current spot for executing
+    	cur.execute("SELECT * FROM racecarleader WHERE name = (?)", (name,))
+    	rows = cur.fetchall()
+    	cur = con.cursor()
+    	if (len(rows) == 0):
+    		cur.execute("INSERT INTO racecarleader (name, score) VALUES (?,?)", 
+	    			(name,1))
+    		con.commit()
+    		msg = "insert"
+    	else:
+    		msg = "updated"
+    		cur.execute("UPDATE racecarleader SET score = score + 1 WHERE name = (?)", (name,))
+    		con.commit()
+
+    	return msg # renders page
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=80,debug=True) # debug mode true and broadcasts
