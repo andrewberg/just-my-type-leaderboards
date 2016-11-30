@@ -2,8 +2,8 @@
 
 import sqlite3
 
-conn = sqlite3.connect('/root/jmt/jmtleaderboards.db')
-print "Opened database successfully";
+conn = sqlite3.connect('./jmtleaderboards.db/')
+print ("Opened database successfully");
 
 conn.execute("CREATE TABLE IF NOT EXISTS "
 	"typingtestleader (name TEXT, score REAL)")
@@ -13,5 +13,5 @@ conn.execute("CREATE TABLE IF NOT EXISTS "
 	"basketballleader (name TEXT, score REAL)")
 conn.execute("CREATE TABLE IF NOT EXISTS "
 	"racecarleader (name TEXT, score REAL)")
-print "Table created successfully";
+print ("Table created successfully");
 conn.close()
