@@ -87,7 +87,7 @@ def blEnterScore():
     		con.close()
 
 @app.route("/jmt/ant/enter", methods = ['POST', 'GET'])
-def blEnterScore():
+def agEnterScore():
     if request.method == 'POST':
     	try:
     		name = request.form['name'] # grab name
