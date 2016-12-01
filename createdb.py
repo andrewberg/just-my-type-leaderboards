@@ -2,7 +2,7 @@
 
 import sqlite3
 
-conn = sqlite3.connect('jmtleaderboards.db')
+conn = sqlite3.connect('./jmtleaderboards.db/')
 print ("Opened database successfully");
 
 conn.execute("CREATE TABLE IF NOT EXISTS "
@@ -13,5 +13,7 @@ conn.execute("CREATE TABLE IF NOT EXISTS "
 	"basketballleader (name TEXT, score REAL)")
 conn.execute("CREATE TABLE IF NOT EXISTS "
 	"racecarleader (name TEXT, score REAL)")
+conn.execute("CREATE TABLE IF NOT EXISTS "
+	"antleader (name TEXT, score REAL)")
 print ("Table created successfully");
 conn.close()
